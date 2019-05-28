@@ -20,12 +20,13 @@
     $db = new Database();
     $rolSesion = (int)$_SESSION['rol'];
     $obtenerAutor = $db->connect()->query("SELECT nombre, apPaterno, apMaterno FROM usuarios WHERE rol_id = '$rolSesion'");
+    $row=$obtenerAutor->fetch(PDO::FETCH_ASSOC);
     $autor =  $row['nombre'] . " " . $row['apPaterno'] . " " . $row['apMaterno'];
     $contenido = $_POST['contenidoAviso'];
-    $nivelDifusion = $_POST['nivelDifusion'];
+    $nivelDifusion = (int)$_POST['nivelDifusion'];
     $caducidad = $_POST['caducidad'];
     $datos= $db->connect()->query("INSERT INTO avisos 
-    VALUES(null,'$contenido','$autor','$difusion','$caducidad')");
+    VALUES(null,'$contenido','$autor','$nivelDifusion','$caducidad')");
     echo '<script>alert(\'Aviso creado exitosamente\');</script>';
     header('location: Avisos.php');
     }
@@ -132,7 +133,7 @@
     <th><input type="date" name="caducidad" min="<?php echo date("Y-m-d");?>" 
     value="<?php echo date("Y-m-d");?>" required></th>
     </tr>
-    </table>
+    </table><br>
             <input type="submit" name="generarAviso" value="Crear aviso"
             style="background: green; color: white ; border-color: green; font-size: 18px;">
     </form>

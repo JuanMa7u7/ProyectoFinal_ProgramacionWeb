@@ -9,7 +9,6 @@
 		}
 	}
 ?>
-?>
 <?php
 	if(isset($_POST['cerrarSesion'])){
 		header('location: ../index.php?cerrar_sesion=3');

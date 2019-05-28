@@ -4,6 +4,7 @@
 	if (isset($_GET['cerrar_sesion'])) {
 		session_unset();
 		session_destroy();
+		header('location: index.php');
 	}
 	if(isset($_SESSION['rol'])){
 		switch ($_SESSION['rol']) {

@@ -1,0 +1,32 @@
+.tabla{
+	border-collapse: separate;
+	border-spacing: 10px;
+	align-content: center;
+	align-self: center;
+	padding-bottom: 5PX;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding: 0.3em;
+	background: rgba(255, 255, 255, 0.10);
+    text-align: center;
+    border-color: blue;
+    border: 1px solid rgb(0, 0, 0);
+	border-collapse: collapse;
+	align-content: center;
+	   align-self: center;
+	/*border: 1px solid #000;*/
+	/*bgcolor= border="1px" title="Datos personales" cellpadding="3px"  */
+}
+th{
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding: 0.3em;
+	background: rgba(255, 255, 255, 0);
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+	border-collapse: collapse;
+	align-content: center;
+	align-self: center;
+    
+}

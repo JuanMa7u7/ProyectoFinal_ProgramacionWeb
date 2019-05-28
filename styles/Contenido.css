@@ -1,0 +1,63 @@
+.tituloEtiqueta
+{
+    font-size: 12px;
+    font-weight:bold;
+}
+
+.infoNumeroReferencia
+{
+    color:Black;
+    font-family:Courier New;
+    font-size: 14px;
+    font-weight:bold;
+}
+
+.infoNumeroReferenciaRojo
+{
+    color: #FF0000;
+    font-family: Courier New;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.infoNumeroReferenciaRojo
+{
+    color: #800000;
+    font-family: Courier New;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ImagenPaso
+{
+    width: 60px; 
+    height: 60px;
+}
+
+.ImagenDescripcionPaso
+{
+    height: 30px; 
+    width: 295px;
+}
+
+.AvisoVerdeBlanco
+{
+    background-color: #FFFFFF;
+    border: 1px solid #006600;
+    font-family: 'MS Sans Serif';
+    font-weight: bolder;
+    font-size: 14px;
+    color: #006600;
+    text-align: center;
+}
+
+.AvisoRojoBlanco
+{
+    background-color: #FFFFFF;
+    border: 1px solid #800000;
+    font-family: 'MS Sans Serif';
+    font-weight: bolder;
+    font-size: 14px;
+    color: #800000;
+    text-align: center;
+}

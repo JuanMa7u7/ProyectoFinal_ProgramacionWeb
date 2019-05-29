@@ -55,6 +55,8 @@
                                 <li><a href="ProcesoInscripcion.php"><h1>Proceso
                                         de Inscripción</h1></a></li>
                                 <li><a href="PreHorario.php"><h1>PreHorarrio</h1></a>
+								
+								<li><a href="PreHorarioEditar.php"><h1>Modificar PreHorario</h1></a>
                                 </li>
                             </ul>
                         </li>

@@ -65,6 +65,8 @@
                                 <li><a href="ProcesoInscripcion.php"><h1>Proceso
                                         de Inscripción</h1></a></li>
                                 <li><a href="PreHorario.php"><h1>PreHorarrio</h1></a>
+								
+								<li><a href="PreHorarioEditar.php"><h1>Modificar PreHorario</h1></a>
                                 </li>
                             </ul>
                         </li>
@@ -91,6 +93,59 @@
 
                 <div id="divBienvenida" style=" font-size:15pt ; text-align:center ; width :100% ">
                     <h2>PreHorario</h2>
+			<table style="width: 100%">
+        <tbody><tr>
+            <td align="center" style="width: 600px;" dir="ltr">
+                
+                <div>
+    <table cellspacing="0" cellpadding="3" rules="cols" id="MainContent_grvAsignaturasAprobadas"
+        style="background-color:White;border-color:Black;border-width:1px;border-style:None;border-collapse:collapse;">
+        <tbody style="background-color: rgb(29, 29, 29);border-color:Black;">
+            <tr
+                style="color:White;background-color:rgba(26, 26, 26, 0.657);font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;font-weight:normal;">
+                <th scope="col" style="color:White;width:10px;">No.</th>
+                <th scope="col" style="color:White;width:65px;">Clave</th>
+                <th scope="col" style="color:White;width:150px;">Nombre</th>
+                <th scope="col" style="color:White;width:36px;">Cred.</th>
+                <th scope="col" style="color:White;width:36px;">Sem.</th>
+                <th scope="col" style="color:White;width:60px;">Horas</th>
+            </tr>
+			
+			
+			<?php
+				
+				include_once("../database/database.php");
+				
+				$inc=0;
+				$conexion = new Database();
+				$query = "SELECT * FROM materia WHERE registrado = 'y'";
+				$resultado = $conexion->connect()->query($query);
+				while($row=$resultado->fetch(PDO::FETCH_ASSOC)){
+					$inc++;
+					
+			?>
+			
+            <tr
+                style="color:Black;background-color:rgb(168, 168, 168);border-style:None;font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;">
+                <td style="border-color:Black;"><?php echo $inc;?></td>
+                <td class="ITL_tabla_celdaCourierCentrado"style="border-color:Black;"><?php echo $row['idMateria'];?></td> <!-- clave de materia-->
+                <td class="ITL_Tabla_celdaIzquierda10"style="border-color:Black;"><?php echo $row['nombre'];?></td><!--nombre de materia -->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['creditos'];?></td><!-- créditos -->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['semestre'];?></td><!-- semestre-->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['horas'];?></td><!--horas-->
+                            </tr>
+				
+				<?php
+				}
+			?>
+			
+			
+            </tr>
+        </tbody>
+    </table>
+	<br>
+	<br>
+</div>
                     <!--
           <h3><span id="MainContent_lblUsuario">LAFUENTE ARAIZA JUAN MANUEL</span> </h3> 
           -->

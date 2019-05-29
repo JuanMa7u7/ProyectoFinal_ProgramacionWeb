@@ -13,6 +13,7 @@
     if(isset($_POST['cerrarSesion'])){
 		header('location: ../index.php?cerrar_sesion=2');
 	}
+	
 ?>
 <html lang="es-mx">
 
@@ -65,6 +66,8 @@
                                 <li><a href="ProcesoInscripcion.php"><h1>Proceso
                                         de Inscripción</h1></a></li>
                                 <li><a href="PreHorario.php"><h1>PreHorarrio</h1></a>
+								
+								<li><a href="PreHorarioEditar.php"><h1>Modificar PreHorario</h1></a>
                                 </li>
                             </ul>
                         </li>
@@ -79,7 +82,10 @@
 
             </div>
         </header>
-        <div class="page">
+		
+		
+		
+		        <div class="page">
             <section class="main">
 
                 <script src="Scripts/ValInternetExplorer.js" type="text/javascript"></script>
@@ -90,16 +96,140 @@
                 <br>
 
                 <div id="divBienvenida" style=" font-size:15pt ; text-align:center ; width :100% ">
-                    <h2>Modificar PreHorario</h2>
+                    <h2>Modificar Prehorario</h2>
                     <!--
           <h3><span id="MainContent_lblUsuario">LAFUENTE ARAIZA JUAN MANUEL</span> </h3> 
           -->
                     <br>
                     <br>
+					<h4>PreHorario registrado</h4>
+                    <br>
+                    <br>
+                    <table style="width: 100%">
+        <tbody><tr>
+            <td align="center" style="width: 600px;" dir="ltr">
+                
+                <div>
+    <table cellspacing="0" cellpadding="3" rules="cols" id="MainContent_grvAsignaturasAprobadas"
+        style="background-color:White;border-color:Black;border-width:1px;border-style:None;border-collapse:collapse;">
+        <tbody style="background-color: rgb(29, 29, 29);border-color:Black;">
+            <tr
+                style="color:White;background-color:rgba(26, 26, 26, 0.657);font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;font-weight:normal;">
+                <th scope="col" style="color:White;width:10px;">No.</th>
+                <th scope="col" style="color:White;width:65px;">Clave</th>
+                <th scope="col" style="color:White;width:150px;">Nombre</th>
+                <th scope="col" style="color:White;width:36px;">Cred.</th>
+                <th scope="col" style="color:White;width:36px;">Sem.</th>
+                <th scope="col" style="color:White;width:60px;">Horas</th>
+                <th scope="col" style="color:White;width:60px;"></th>
+            </tr>
+			
+			
+			<?php
+				
+				include_once("../database/database.php");
+				
+				
+				$conexion = new Database();
+				$query = "SELECT * FROM materia WHERE registrado = 'y'";
+				$resultado = $conexion->connect()->query($query);
+				$cantidadMaterias=0;
+				
+				if($cantidadMaterias >= 4){
+					
+				}
+				
+				while($row=$resultado->fetch(PDO::FETCH_ASSOC)){
+					$cantidadMaterias++;
+					
+			?>
+			
+            <tr
+                style="color:Black;background-color:rgb(168, 168, 168);border-style:None;font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;">
+                <td style="border-color:Black;"><?php echo $cantidadMaterias;?></td>
+                <td class="ITL_tabla_celdaCourierCentrado"style="border-color:Black;"><?php echo $row['idMateria'];?></td> <!-- clave de materia-->
+                <td class="ITL_Tabla_celdaIzquierda10"style="border-color:Black;"><?php echo $row['nombre'];?></td><!--nombre de materia -->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['creditos'];?></td><!-- créditos -->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['semestre'];?></td><!-- semestre-->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['horas'];?></td><!--horas-->
+				<td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;">
+				
+				<a href = "DarBaja.php?idMateria=<?php echo $row['idMateria'];?>">Dar de baja</a>
+				</td>
+				
+            </tr>
+				
+				<?php
+				}
+			?>
+			
+			
+            </tr>
+        </tbody>
+    </table>
+	<br>
+	<br>
+</div>
+		<div>
+		<h4>Grupos disponibles</h4>
+		</div>
+            <table cellspacing="0" cellpadding="3" rules="cols" id="MainContent_grvAsignaturasAprobadas"
+        style="background-color:White;border-color:Black;border-width:1px;border-style:None;border-collapse:collapse;">
+        <tbody style="background-color: rgb(29, 29, 29);border-color:Black;">
+            <tr
+                style="color:White;background-color:rgba(26, 26, 26, 0.657);font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;font-weight:normal;">
+                <th scope="col" style="color:White;width:10px;">No.</th>
+                <th scope="col" style="color:White;width:65px;">Clave</th>
+                <th scope="col" style="color:White;width:150px;">Nombre</th>
+                <th scope="col" style="color:White;width:36px;">Cred.</th>
+                <th scope="col" style="color:White;width:36px;">Sem.</th>
+                <th scope="col" style="color:White;width:60px;">Horas</th>
+                <th scope="col" style="color:White;width:60px;"></th>
+            </tr>
+			
+			
+			<?php
+				
+				include_once("../database/database.php");
+				
+				$inc=0;
+				$conexion = new Database();
+				$query = "SELECT * FROM materia WHERE registrado != 'y'";
+				$resultado = $conexion->connect()->query($query);
+				while($row=$resultado->fetch(PDO::FETCH_ASSOC)){
+					$inc++;
+					
+			?>
+			
+            <tr
+                style="color:Black;background-color:rgb(168, 168, 168);border-style:None;font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;">
+                <td style="border-color:Black;"><?php echo $inc;?></td>
+                <td class="ITL_tabla_celdaCourierCentrado"style="border-color:Black;"><?php echo $row['idMateria'];?></td> <!-- clave de materia-->
+                <td class="ITL_Tabla_celdaIzquierda10"style="border-color:Black;"><?php echo $row['nombre'];?></td><!--nombre de materia -->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['creditos'];?></td><!-- créditos -->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['semestre'];?></td><!-- semestre-->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><?php echo $row['horas'];?></td><!--horas-->
+                <td class="ITL_tabla_celdaCourierCentrado" align="center" style="border-color:Black;"><a href = "DarAlta.php?idMateria=<?php echo $row['idMateria'];?>">Dar de alta</a></td><!--dar de alta-->
+            </tr>
+				
+				<?php
+				}
+			?>
+			
+			
+            </tr>
+        </tbody>
+    </table>
                 </div>
             </section>
         </div>
-        </form>
+		
+		
+		
+		
+		
+		
+        
         <footer class="footer">
             <strong>Copyright � 2019 - SIIA</strong>
         </footer>

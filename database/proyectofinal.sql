@@ -101,3 +101,34 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+----Creación e inserción de tabla materias
+CREATE TABLE IF NOT EXISTS `materia`(
+``idMateria` INT NOT NULL,
+`nombre` VARCHAR(60) NOT NULL,
+`semestre` VARCHAR(30) NOT NULL,
+`creditos` VARCHAR(2) NOT NULL,
+`horas` VARCHAR(2) NOT NULL,
+`registrado` VARCHAR(10) NOT NULL,
+PRIMARY KEY (`idMateria`)
+);
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4130', 'TALLER DE INVESTIGACION I','Sem. 7', '4','4', 'y');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4028', 'CONMUTACION Y ENRUTAMIENTO EN REDES DE DATOS','Sem. 7', '5','5', 'y');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4065', 'BASES DE DATOS AVANZADAS','Sem. 7', '5','5', 'y');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4119', 'PROGRAMACION WEB','Sem. 8', '5','5', 'y');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4075', 'LEANGUAJES DE INTERFAZ','Sem. 6', '4','4'. 'y');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4022', 'INGENIERIA DE SOFTWARE','Sem. 6', '5','5', 'y');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4066', 'PROGRAMACION LOGICA Y FUNCIONAL','Sem. 8', '4','4','n');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4044', 'LENGUAJES Y AUTOMATAS II','Sem. 7', '5','5', 'n');
+INSERT INTO `materia` (`idMateria`, `nombre`, `semestre`,`creditos`, `horas`, `registrado`) VALUES 
+('4057', 'TALLER DE SISTEMAS OPERATIVOS','Sem. 6', '4','4','n');

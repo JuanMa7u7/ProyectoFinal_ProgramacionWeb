@@ -112,8 +112,12 @@
 		</tr>
 		<?php
 		include_once '../database/database.php';
-		$db = new Database();
-		$datos= $db->connect()->query('SELECT id, contenido, autor, difusion, caducidad from avisos');
+        $db = new Database();
+        $rolSesion = (int)$_SESSION['rol'];
+        $obtenerAutor = $db->connect()->query("SELECT nombre, apPaterno, apMaterno FROM usuarios WHERE rol_id = '$rolSesion'");
+        $fila=$obtenerAutor->fetch(PDO::FETCH_ASSOC);
+        $autor =  $fila['nombre'] . " " . $fila['apPaterno'] . " " . $fila['apMaterno'];
+		$datos= $db->connect()->query("SELECT id, contenido, autor, difusion, caducidad from avisos where difusion = 2 or difusion = 3 or autor = '$autor'");
 
 		while ($row=$datos->fetch(PDO::FETCH_ASSOC)) {
 			$Con=$row['id'];

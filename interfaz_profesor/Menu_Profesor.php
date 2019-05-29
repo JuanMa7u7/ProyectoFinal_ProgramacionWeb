@@ -71,40 +71,18 @@
                 <div id="divBienvenida" style=" font-size:15pt ; text-align:center ; width :100% ">
                     <h2>Bienvenido Profesor</h2>
                     <br>
-                    <table style="width: 100%">
+                    <?php
+                    include_once '../database/database.php';
+                    $db = new Database();
+                    $rolSesion = (int)$_SESSION['rol'];
+                    $obtenerNombreUsuario = $db->connect()->query("SELECT nombre, apPaterno, apMaterno FROM usuarios WHERE rol_id = '$rolSesion'");
+                    $row=$obtenerNombreUsuario->fetch(PDO::FETCH_ASSOC);
+                    $nombreUsuario =  $row['nombre'] . " " . $row['apPaterno'] . " " . $row['apMaterno'];
+                    echo "<h2>" . $nombreUsuario . "</h2><br><br>";
 
-                        <tbody>
-                            <tr>
-                                <td align="center" dir="ltr">
-                                    <h2>AVISOS</h2>
-                                    <div>
-                                        <table cellspacing="0" cellpadding="3" rules="cols"
-                                            id="MainContent_wcAvisos1_grvInformacion"
-                                            style="background-color:gray;
-                                            border-color:black;border-width:1px;border-style:None;border-collapse:collapse;">
-                                            <tbody>
-                                                <tr
-                                                    style="color:White;background-color:#2E2E2E;font-family:Arial,Helvetica,sans-serif;font-size:XX-Small;font-weight:normal;">
-                                                    <th scope="col" style="color:White;width:13px;">No.</th>
-                                                    <th scope="col" style="color:WHITE;width:150px;">Departamento
-                                                    </th>
-                                                    <th scope="col" style="color:White;width:350px;">Mensaje</th>
-                                                    <th scope="col" style="color:White;width:80px;">Fecha
-                                                        Publicacion</th>
-                                                    <th scope="col" style="color:White;width:50px;">Requerido para
-                                                        Inscripcion</th>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="5" style="color:White;">- - - -</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <br>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    date_default_timezone_set("America/Mexico_City"); 
+                    echo "<h2>Fecha y hora: " . date("Y-m-d H:i:s", time()) . "</h2>";  
+                    ?>
                     <br>
                 </div>
             </section>

@@ -73,11 +73,19 @@
 
                 <div id="divBienvenida" style=" font-size:15pt ; text-align:center ; width :100% ">
                     <h2>Bienvenido</h2>
-                    <!--
-          <h3><span id="MainContent_lblUsuario">LAFUENTE ARAIZA JUAN MANUEL</span> </h3> 
-          -->
                     <br>
-                    <br>
+                    <?php
+                    include_once '../database/database.php';
+                    $db = new Database();
+                    $rolSesion = (int)$_SESSION['rol'];
+                    $obtenerNombreUsuario = $db->connect()->query("SELECT nombre, apPaterno, apMaterno FROM usuarios WHERE rol_id = '$rolSesion'");
+                    $row=$obtenerNombreUsuario->fetch(PDO::FETCH_ASSOC);
+                    $nombreUsuario =  $row['nombre'] . " " . $row['apPaterno'] . " " . $row['apMaterno'];
+                    echo "<h2>" . $nombreUsuario . "</h2><br><br>";
+
+                    date_default_timezone_set("America/Mexico_City"); 
+                    echo "<h2>Fecha y hora: " . date("Y-m-d H:i:s", time()) . "</h2>";  
+                    ?>
                 </div>
             </section>
         </div>

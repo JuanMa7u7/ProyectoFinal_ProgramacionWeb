@@ -104,8 +104,8 @@ if(isset($_POST['Cancelar'])){
                 <table align="center">
                 <tr>
                 <th align="left"><h2>Tipo de usuario: </h2></th>
-                <th><select name="rol_id">
-                <option selected="true" disabled="disabled" required>Selecciona un rol de usuario</option>
+                <th><select name="rol_id" required>
+                <option selected="true" disabled="disabled">Selecciona un rol de usuario</option>
                 <option value="1">Profesor (1)</option>
 	            <option value="2">Alumno (2)</option>
 	            <option value="3">Administrador (3)</option>

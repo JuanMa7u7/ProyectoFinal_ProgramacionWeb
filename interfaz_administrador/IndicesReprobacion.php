@@ -53,7 +53,74 @@
                 <div id="divBienvenida" style=" font-size:15pt ; text-align:center ; width :100% ">
                     <h2>Indices de reprobacion</h2>
                     <br>
+                    <!---------------------------------------------------------------------------------->
+                    <!--Implementacion de la API Google Charts-->
                     
+    <center>
+    <form action="IndicesReprobacion.php" metod="GET">
+    <table>
+    <tr>
+    <th>Nombre del profesor: <select name="nombreProfesor" required>
+     <option selected="true" disabled="disabled" value="">Selecciona un profesor</option>
+    <?php
+    include_once '../database/database.php';
+    $db = new Database();
+    $obtenerProfesores = $db->connect()->query("SELECT nombre, apPaterno, apMaterno FROM usuarios WHERE rol_id = '1'");
+    while ($row=$obtenerProfesores->fetch(PDO::FETCH_ASSOC)) {
+			$Con=$row['nombre'] . " " . $row['apPaterno'] . " " . $row['apMaterno'];
+			
+    echo "<option value=\"$Con\">$Con</option>";
+    }
+    ?>
+    
+    </select>
+    </th>
+    <th>Materia: <select name="nombreMateria" required>
+    <option selected="true" disabled="disabled" value="">Selecciona una materia</option>
+    <option value="Calculo Diferencial">Calculo Diferencial</option>
+    </select>
+    </th>
+    </tr>
+    </table>
+    <br>
+    <input type="submit" name="ConsultarIndiceReprobacion" value="Consultar"
+    style="background: green; color: white ; border-color: green; font-size: 18px;">
+    <br>
+    </form>
+    <br>
+    <!--Desplegar grafica-->
+    <?php
+        if(isset($_GET['ConsultarIndiceReprobacion'])){
+            $alumnosAprobados = 18;
+            $alumnosReprobados = 12;
+            $alumnosTotales = $alumnosAprobados + $alumnosReprobados;
+            echo "Indice de reprobacion del profesor <b>" . $_GET['nombreProfesor'] .
+            "</b> en la materia <b>". $_GET['nombreMateria'] ."</b>\n";
+            echo "
+            <script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>
+    <script type=\"text/javascript\">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        
+        var data = google.visualization.arrayToDataTable([
+          ['Suma de calificaciones del grupo', 'Cantidad de alumnos'],
+          ['Alumnos aprobados'," . $alumnosAprobados ."],
+          ['Alumnos reprobados',". $alumnosReprobados ."],
+        ]);
+        var options = {
+          title: \"Indice de reprobacion del profesor \"  
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+            <div id=\"piechart\" style=\"width: 900px; height: 500px;\" ></div>";
+        }
+        ?>
+    </center>
                                     </div>
                                     <br>
                                 </td>
